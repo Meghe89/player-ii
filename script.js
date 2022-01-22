@@ -1,14 +1,20 @@
 let tracks = [
     {   url : './audio/ACDC - Thunderstruck.mp3' ,
-    cover : './cover/cover acdc.jpg', artist : 'ACDC' , title : 'Thunderstruck'},
+    cover : './cover/cover acdc.jpg', artist : 'ACDC' , title : 'Thunderstruck', id: 1},
+    {   url : './audio/Green Day - Boulevard of Broken Dreams.mp3' ,
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Boulevard Of Broken Dreams'},
     {   url : './audio/Guns n  Roses - Sweet Child O Mine.mp3' ,
     cover : './cover/cover apetite for descruction.jpg', artist : `GUNS N' ROSES` , title : `Sweet Child O' Mine`},
     {   url : './audio/Maneskin - Amandoti.mp3' ,
     cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Amandoti'},
     {   url : './audio/ACDC - Shoot to Thrill.mp3' ,
     cover : './cover/cover back in black.jpg', artist : 'ACDC' , title : 'Shoot to Thrill'},
+    {   url : './audio/Green Day - Holiday.mp3' ,
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Holiday'},
     {   url : './audio/Pink Floyd - Another Brick In The Wall.mp3' ,
     cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Another Brick In The Wall'},
+    {   url : './audio/All American Rejects - Gives You Hell.mp3' ,
+    cover : './cover/cover When The World Comes Down.jpg', artist : 'ALL AMERICAN REJECTS' , title : 'Gives You Hell'},
     {   url : './audio/Måneskin - Chosen.mp3' ,
     cover : './cover/cover chosen.jpg', artist : 'MANESKIN' , title : 'Chosen'},
     {   url : './audio/Jeff Buckley - Grace.mp3' ,
@@ -27,12 +33,20 @@ let tracks = [
     cover : './cover/cover use your illusion.jpg', artist : `GUNS N' ROSES` , title : `Don't Cry`},
     {   url : './audio/Måneskin - Coraline.mp3' ,
     cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Coraline'},
+    {   url : './audio/Beatles - Let It Be.mp3' ,
+    cover : './cover/cover Let It Be.jpg', artist : 'BEATLES' , title : 'Let It Be'},
+    {   url : './audio/Green Day - Stray Heart.mp3' ,
+    cover : './cover/cover ¡dos!.jpg', artist : 'GREEN DAY' , title : 'Stray Heart'},
     {   url : 'audio/Pink Floyd - Comfortably Numb.mp3' ,
     cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Comfortambly Numb'},
     {   url : './audio/Red Hot Chili Peppers - Tell Me Baby.mp3' ,
     cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Tell Me Baby'},
+    {   url : './audio/Green Day - Wake Me Up When September Ends.mp3' ,
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Wake Me Up When September Ends'},
     {   url : './audio/Red Hot Chili Peppers - Dani California.mp3' ,
     cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Dani California'},
+    {   url : './audio/Green Day - 21 Guns.mp3' ,
+    cover : './cover/cover 21st Century Breakdown.jpg', artist : 'GREEN DAY' , title : '21 Guns'},
     {   url : './audio/Red Hot Chili Peppers - Scar Tissue.mp3' ,
     cover : './cover/cover californication.jpg', artist : 'RHCP' , title : 'Scar Tissue'},
     {   url : `./audio/Guns n Roses - Knockin' on Heaven's Door.mp3` ,
@@ -47,17 +61,10 @@ let tracks = [
     cover : './cover/cover il ballo della vita.jpg', artist : 'MANESKIN' , title : `Torna A Casa`},
     {   url : './audio/Queen - Radio Ga Ga.mp3' ,
     cover : './cover/cover the works.jpg', artist : 'QUEEN' , title : 'Radio Ga Ga'},
+    {   url : './audio/Green Day - American Idiot.mp3' ,
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot'},    
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
     cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni'},
-
-
-
-
-
-
-
-    /*{   url : './audio/Ghostrifter Official - Transient.mp3' ,
-    cover : './cover/cover-4.jpg', artist : 'Ghostrifter' , title : 'Transient'}, */
 ]
 
 /* ASSOCIAZIONE DOM */
@@ -74,6 +81,7 @@ let trackCover = document.querySelector('#track-cover')
 let currentTime = document.querySelector('#current-time')
 let totalTime = document.querySelector('#total-time')
 let track = document.querySelector('#track')
+
 
 //query prese da Davide
 let volumeBtn = document.querySelector('#volume-btn')// Pannello volume
