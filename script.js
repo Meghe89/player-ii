@@ -108,6 +108,15 @@ let random = false
 let volume = track.volume
 
 
+console.log(trackTitle);
+function truncateTitle(trackTitle) {            
+            
+    if (trackTitle.length < 18) {
+        return trackTitle
+    } else{
+        return trackTitle.substr(0 ,17) + '...'
+    }    
+}
 
 
 
@@ -162,11 +171,11 @@ function closeSidebar(){
     if (!playing) {
         
         play()
-        console.log(playing);
+       
     } else{
         playing = false
         play()
-        console.log(playing);
+        
     }
 }
 
@@ -291,7 +300,7 @@ function grabVolHandle(e) {
             track.volume = 1
         }
         let position = ((-1 * (x-6)) / volumeSlider.offsetHeight) + 1
-        console.log(position)
+        
         track.volume = position
         updateVolumeCursor()
     }
@@ -391,7 +400,7 @@ function barEvent(){
         if (e.code == 'Space') {
             play()
         } else{
-            console.log('errore');
+            
         }
     })
 
@@ -445,4 +454,4 @@ populateTrackList()
 changeTrackDetails()
 changePlaylistActive()
 barEvent()
-
+truncateTitle()
