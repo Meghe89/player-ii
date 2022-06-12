@@ -17,12 +17,18 @@ let tracks = [
     cover : './cover/cover When The World Comes Down.jpg', artist : 'ALL AMERICAN REJECTS' , title : 'Gives You Hell'},
     {   url : './audio/Måneskin - Chosen.mp3' ,
     cover : './cover/cover chosen.jpg', artist : 'MANESKIN' , title : 'Chosen'},
+    {   url : './audio/Placebo - Every Me And Every You.mp3' ,
+    cover : `./cover/cover without you i'm nothing.jpg`, artist : 'PLACEBO' , title : 'Every Me And Every You'},
+    {   url : './audio/Måneskin - Supermodel.mp3',
+    cover : './cover/cover Supermodel.jpg', artist: 'MANESKIN',  title : 'Supermodel'},
     {   url : './audio/Jeff Buckley - Grace.mp3' ,
     cover : './cover/cover grace.jpg', artist : 'JEFF BUCKLEY' , title : 'Grace'},
     {   url : './audio/Muse - Hysteria.mp3' ,
     cover : './cover/cover absolution.jpg', artist : 'MUSE' , title : 'Hysteria'},
     {   url : './audio/Omnia - Free Ra Huri.mp3' ,
     cover : './cover/cover Musick and Poëtree.jpg', artist : 'OMNIA' , title : 'Free Ra Huri'},
+    {   url : '/audio/Elton John - Rocket Man.mp3' ,
+    cover : './cover/Cover Honky Chateau.jpg', artist : 'ELTON JOHN' , title : 'Rocket Man'},
     {   url : `./audio/Red Hot Chili Peppers - Shes Only 18.mp3` ,
     cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : `She's Only 18`},
     {   url : './audio/Maneskin - I Wanna Be Your Slave.mp3' ,
@@ -65,229 +71,284 @@ let tracks = [
     cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot'},    
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
     cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni'},
+   
 ]
 
-/* ASSOCIAZIONE DOM */
-/* funzionalità */
-let playBtn = document.querySelector('#play-btn')
-let pauseBtn = document.querySelector('#pause-btn')
-let prevBtn = document.querySelector('#prev-btn')
-let nextBtn = document.querySelector('#next-btn')
-let sidebarToggler = document.querySelector('#sidebar-toggle')
-/* dettagli canzone */
-let trackArtist = document.querySelector('#track-artist')
-let trackTitle = document.querySelector('#track-title')
-let trackCover = document.querySelector('#track-cover')
-let currentTime = document.querySelector('#current-time')
-let totalTime = document.querySelector('#total-time')
-let track = document.querySelector('#track')
+
+/* SELECTORS */
+
+/* btns */
+const plailystBtn = document.querySelector('#playlist-btn');
+const playBtn = document.querySelector('#play-btn');
+const pauseBtn = document.querySelector('#pause-btn');
+const rightBtn = document.querySelector('#right-btn');
+const leftBtn = document.querySelector('#left-btn');
+const shuffleBtn = document.querySelector('#shuffle-btn');
 
 
-//query prese da Davide
-let volumeBtn = document.querySelector('#volume-btn')// Pannello volume
-let volumeBar = document.querySelector('.volume-bar')// Wrapper per lo slider del volume
-let volumeIcon = document.querySelector('#volume-icon')// Icona volume (pulsante "mute")
-let volumeSlider = document.querySelector('#volume-slider')// Slider volume (totale, height 100%)
-let volumeCursor = document.querySelector('#volume-cursor')// Slider volume (attuale, 0% < height < 100%)
-let volumeCursorHandle = document.querySelector('#volume-cursor') // Dot su slider volume (per Volume on Drag)
+/* track */
+const playlist = document.querySelector('.playlist');
+const circleCd = document.querySelector('.circle-cd');
+let track = document.querySelector('#track');
+const trackArtist = document.querySelector('#track-artist')
+const trackTitle = document.querySelector('#track-title')
+const trackCover = document.querySelector('#track-cover');
+const backgroundImage = document.querySelector('#background-image');
 
-let progressWrap = document.querySelector('#progress-bar')//Barra di avanzamento (duration)
-let progressBar = document.querySelector('#progress-counter')//Barra del progresso (currentTime)
-let seekPreview = document.querySelector('#seek-preview')// Pannello volume
-
-let progress = document.getElementById('progress');
-let progressContainer = document.getElementById('progress-container');
-let randomBtn = document.querySelector('#random-btn')
-let backgroundImage = document.querySelector('#background-image')
-let trackCard = document.querySelectorAll('.track-card')
-
-/* variabile globale per far partire la traccia */
-let currentTrack = 0
-let playing = false
-let random = false
-let volume = track.volume
+/* volume */
+const volumeBtn = document.querySelector('#volume-btn');
+const volumeBar = document.querySelector('#volume-bar');
+const volumeIcon = document.querySelector('#volume-icon');
+const volumeSlider = document.querySelector('#volume-slider');
+const volumeCursor = document.querySelector('#volume-cursor');
+const volumeCursorHandle = document.querySelector('#volume-cursor');
 
 
-console.log(trackTitle);
-function truncateTitle(trackTitle) {            
-            
-    if (trackTitle.length < 18) {
-        return trackTitle
-    } else{
-        return trackTitle.substr(0 ,17) + '...'
-    }    
-}
 
 
+/* time */
+const currentTime = document.querySelector('#current-time');
+const timeLeft = document.querySelector('#time-left');
+const songCurrent = document.querySelector('.song-current');
+const songLength = document.querySelector('.song-length');
+
+/* variabili globali per traccia */
+let playing = false;
+let currentTrack = 0;
+let random = false;
+let volume = track.volume;
+let grabbedVol = false;
+
+
+/* FUNCTIONS */
 
 function populateTrackList() {
-    let wrapper = document.querySelector('#tracklist-wrapper')
-    
-    
-    tracks.forEach((track, index )=>{
-        let card = document.createElement('div')
+    tracks.forEach((track, index)=>{
+        let card = document.createElement('div');
 
-        card.classList.add('col-12')
+        card.classList.add('track-playlist');
         card.innerHTML = 
         `
-        <div class="d-flex justify-content-between align-items-center px-4 py-3 border-b track-card">
-            <img class="thumbnail" src="${track.cover}" alt="copertina">
-            <div>
-                <h5 class=" tc-linear">${track.artist}</h5>
-                <h6 class=" tc-white">${track.title}</h6>
-            </div>                
-            <i data-track="${index}" class="fab fa-napster fs-2 tc-linear playlist-play"></i>
+        <div class="track-card">
+            <div class="mini-cd ">
+                <img class="thumbnail ml-3" src="${track.cover}" alt="copertina">
+            </div>
+            <div class="playlist-title">
+                <span class="tc-green track-artist font-cursive">${track.artist}</span>
+                <span class="tc-accent font-cursive">${track.title}</span>
+            </div>
             
-        </div>
+                <i data-track="${index}" id="playlist-play" class="fa-solid fa-circle-play tc-blue playlist-id fa-3x"></i>
+                <i id="playlist-pause" class="fa-solid fa-circle-pause tc-blue fa-3x "></i>
+            
+            </div
         `
-        wrapper.appendChild(card)
-    })
+        playlist.appendChild(card);
+    });
 
-    let playBtns = document.querySelectorAll('.playlist-play')
-    
-    playBtns.forEach(btn =>{
-        btn.addEventListener('click', ()=>{
-            let selectedTrack = btn.getAttribute('data-track')
-
-            currentTrack = selectedTrack 
-
-            changeTrackDetails()
-            changePlaylistActive()
-            closeSidebar()
-
-        })
-    })
-}
-
-
-function openSidebar() {
-    let sidebar = document.querySelector('#sidebar')
-    sidebar.classList.toggle('open')
-}
-
-function closeSidebar(){
-    sidebar.classList.remove('open')
-
-    if (!playing) {
-        
-        play()
+    let playBtns = document.querySelectorAll('.playlist-id')
+    .forEach(btn=>btn.addEventListener('click', ()=>{
+        let selectedTrack = btn.getAttribute('data-track');
+        currentTrack = selectedTrack;
+        changeTrackDetails()
+        changePlaylistActive()
+        if(playing ){
+            play()
+        }
+        if (!playing) {
+            play()
+        } 
        
-    } else{
-        playing = false
-        play()
-        
-    }
+    }))
+}
+
+function changePlaylistActive(){
+    let trackListCards = document.querySelectorAll('.track-card')
+    .forEach((card, index)=>{
+        if(index == currentTrack){
+            card.classList.add('active');
+        } else {
+            card.classList.remove('active');
+        }
+    })
 }
 
 
-/* FUNZIONI */
-/* audio */
+function playlistToggle() {
+    playlist.classList.toggle('playlist-toggle')
+}
+
+
 function play() {
     if (!playing) {
         playBtn.classList.add('d-none')
-        pauseBtn.classList.remove('d-none')
-        trackCover.classList.add('active')
-        track.play()
-        playing = true        
-    }else{
-        playBtn.classList.remove('d-none')
-        pauseBtn.classList.add('d-none')
-        trackCover.classList.remove('active')
-        track.pause()
-        playing = false
+        pauseBtn.classList.remove('d-none');
+        circleCd.classList.add('active');
+        track.play();
+        playing = true;
+    } else {
+        playBtn.classList.remove('d-none');
+        pauseBtn.classList.add('d-none');
+        circleCd.classList.remove('active');
+        track.pause();
+        playing = false;
     }
-}
-
-function prev() {
-    if (random === false) {
-        currentTrack--        
-    }else{
-        currentTrack = [Math.floor(Math.random() * tracks.length)]
-
-    }  
-    
-    if (currentTrack < 0) {
-        currentTrack = tracks.length -1
-    }
-    
-    changeTrackDetails()
-    changePlaylistActive()
-
-    
-    //controllo se la traccia è in esecuzione
-    //se la traccia è in esecuzione e cambio traccia la musica si blocca
-    //quindi devo reimpostare playing a false e farla ripartire
-    if (playing) {
-        playing = false
-        play()        
-    } 
-    
 }
 
 function next() {
-
-    if (random === false) {
+    if (!random) {
         currentTrack++        
-    }else{
+    } else {
         currentTrack = [Math.floor(Math.random() * tracks.length)]
+    }
 
-    }  
-    
-    
     if (currentTrack > tracks.length -1) {
         currentTrack = 0
     }
     
+        
     changeTrackDetails()
+    controlPlaying() 
     changePlaylistActive()
+    
+}
 
+function prev() {
+    if (!random) {
+        currentTrack--        
+    } else {
+        currentTrack = [Math.floor(Math.random() * tracks.length)]
+    }
+
+    if (currentTrack < 0) {
+        currentTrack = tracks.length -1
+    }
+
+   
     
-    //controllo se la traccia è in esecuzione
-    //se la traccia è in esecuzione e cambio traccia la musica si blocca
-    //quindi devo reimpostare playing a false e farla ripartire
+    changeTrackDetails()
+    controlPlaying()
+    changePlaylistActive()
+}
+
+function controlPlaying() {
     if (playing) {
-        playing = false
-        play()        
-    } 
-    
+        playing = false;
+        play()
+    }
 }
 
 
 
+setInterval(function() {    
+   currentTime.innerHTML = formatTime(track.currentTime)
+   timeLeft.innerHTML = formatTime(track.duration-track.currentTime);   
+   updateProgress()
+},900)
 
 
-// ~~~~ PANNELLO VOLUME ~~~~~~~~~~~~~~~~~~ //
-//Aggiorna volume al caricamento della pagina
-updateVolumeCursor()
-//Pulsante VOLUME (MUTE)
+function formatTime(sec){
+    let minutes = Math.floor(sec / 60);
+    let seconds = Math.floor(sec - minutes * 60);
+    if(seconds <10){
+        seconds = `0${seconds}`;
+    }
+    return `${minutes}.${seconds}`;
+}
 
-volumeIcon.addEventListener('click', ()=>{
+function truncateTitle(str) {
+    if (str.length < 6){
+        return str
+    } else {
+        return str.substr(0, 6) + '...'
+    }
+}
+
+function changeTrackDetails() {
+    track.src = tracks[currentTrack].url;
+    trackArtist.innerHTML = truncateTitle(tracks[currentTrack].artist);
+    trackTitle.innerHTML = tracks[currentTrack].title;
+    trackCover.src = tracks[currentTrack].cover
+    backgroundImage.src = tracks[currentTrack].cover
+    
+}
+
+function randomTrack() {
+    shuffleBtn.classList.toggle('active')
+    if (!random) {
+        random = true
+    } else {
+        random = false
+    }
+}
+
+function updateProgress() {
+    let progressPercent = parseFloat((track.currentTime / track.duration) * 100).toFixed(2);    
+   
+    songCurrent.style.width = `${progressPercent}%`    
+}
+
+function setProgress(e) {
+    let width = this.clientWidth;
+    let clickX = e.offsetX;
+    let duration = track.duration;
+    
+    track.currentTime = (clickX / width) * duration;
+    
+}
+
+function buttonsEvents(ev) {
+    if (ev.code === 'Space') {
+        play()
+    }
+    if (ev.code === 'ArrowRight') {
+        next()
+    }
+    if (ev.code === 'ArrowLeft') {
+        prev()
+    }
+}
+
+function sidebarPlay() {
+    playlistToggle()       
+}
+
+function updateVolumeCursor() {
+    volumeCursor.style.height = (100 - track.volume * 100) + '%';
+    if(track.volume >= 0.50) {volumeIcon.className = "fas fa-volume-up"} else
+    if(track.volume > 0.00) {volumeIcon.className = "fas fa-volume-down"} else
+    if(track.volume == 0.00) {volumeIcon.className = "fas fa-volume-mute"}
+}
+
+function grabVolHandle(e) {
+    grabbedVol = true;
+    let x = e.offsetY;
+    console.log(x);
+}
+
+function checkVolume() {
     if (track.volume) {
         track.volume = 0;
-        // volumeIcon.classList.remove('fa-volume-up')
-        // volumeIcon.classList.add('fa-volume-mute')
         updateVolumeCursor()
-    } else {
-        track.volume = volume
-        track.volume =  volume
-        // volumeIcon.classList.add('fa-volume-up')
-        // volumeIcon.classList.remove('fa-volume-mute')
+    } else{
+        track.volume = volume;
         updateVolumeCursor()
     }
-})
-//Slider VOLUME (on wheel)
-volumeBtn.addEventListener('wheel', (event)=>{
-    if (((track.volume + event.wheelDeltaY*0.0001)<=1)&&((track.volume + event.wheelDeltaY*0.0001)>=0)){
-        track.volume += event.wheelDeltaY*0.0001
-        if (track.volume<0.05){
-            track.volume = 0
-        }
-        volume = track.volume
-        updateVolumeCursor()
+}
+
+function volumeWheel(ev) {
+    if (((track.volume + ev.wheelDeltaY*0.0001) <= 1) && ((track.volume + ev.wheelDeltaY*0.0001) >= 0)) {
+       track.volume += ev.wheelDeltaY*0.0001
+       if (track.volume < 0.05) {
+           track.volume = 0
+       }
+       volume = track.volume;
+       updateVolumeCursor();
     }
-})
-//Slider VOLUME (drag/drop)
-let grabbedVol = false
+}
+function releaseVolHandle(e) {
+    grabbedVol = false;
+}
 function grabVolHandle(e) {
     grabbedVol = true
     let x = e.offsetY;
@@ -305,9 +366,7 @@ function grabVolHandle(e) {
         updateVolumeCursor()
     }
 }
-function releaseVolHandle(e){
-    grabbedVol = false
-}
+
 function dragVolHandle(e){
     if(grabbedVol){
 
@@ -326,132 +385,39 @@ function dragVolHandle(e){
     }
 
 }
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-
-
-function changeTrackDetails() {
-    
-    track.src = tracks[currentTrack].url
-    trackArtist.innerHTML = tracks[currentTrack].artist
-    trackTitle.innerHTML = tracks[currentTrack].title
-    trackCover.src = tracks[currentTrack].cover
-    backgroundImage.src = tracks[currentTrack].cover
-}
-
-
-function changePlaylistActive() {
-    let tracklistCards = document.querySelectorAll('.track-card')
-    //prima tolgo da tutte le card la classe active, poi la aggiungo a quella che ho cliccato
-    tracklistCards.forEach((card, index) =>{
-        if (index == currentTrack) {
-            card.classList.add('active')
-            
-        }else{
-            card.classList.remove('active')
-        }
-    })
-    
-}
-
-
-
-
-function activeRandom(){
-    
-    randomBtn.classList.toggle('active')
-    if(random){
-        random = false
-        /* play() */
-    } else {
-        random = true
-        /* play() */
-    }
-    
-   
-}
-randomBtn.addEventListener('click', activeRandom)
-
-
-
-
-// Aggiorna altezza del cursorse Volume
-function updateVolumeCursor(){
-    volumeCursor.style.height = (100 - track.volume * 100) + '%'
-    if(track.volume >= 0.50) {volumeIcon.className = "fas fa-volume-up"} else
-    if(track.volume > 0.00) {volumeIcon.className = "fas fa-volume-down"} else
-    if(track.volume == 0.00) {volumeIcon.className = "fas fa-volume-mute"}
-
-}
-
-/* EVENTI */
-playBtn.addEventListener('click', play)
-pauseBtn.addEventListener('click', play)
-nextBtn.addEventListener('click', next)
-prevBtn.addEventListener('click', prev)
+/* LISTENERS */
+playBtn.addEventListener('click', play);
+pauseBtn.addEventListener('click', play);
+plailystBtn.addEventListener('click', playlistToggle);
+rightBtn.addEventListener('click', next);
+leftBtn.addEventListener('click', prev);
 track.addEventListener('ended', next)
+shuffleBtn.addEventListener('click', randomTrack);
+songLength.addEventListener('click', setProgress)
+window.addEventListener('keydown', buttonsEvents);
+
+volumeIcon.addEventListener('click', checkVolume);
+volumeBtn.addEventListener('wheel', volumeWheel);
 
 
-sidebarToggler.addEventListener('click', openSidebar)
-
-function barEvent(){
-    document.addEventListener('keydown', (e)=>{
-        if (e.code == 'Space') {
-            play()
-        } else{
-            
-        }
-    })
-
-}
-
-
-
-function formatTime(sec){
-    let minutes = Math.floor(sec / 60);
-    let seconds = Math.floor(sec - minutes * 60);
-    if(seconds <10){
-        seconds = `0${seconds}`;
-    }
-    return `${minutes}.${seconds}`;
-}
-
-let barProgress = document.querySelector('#progress')
-
-
-
-function updateProgress(e) {
-    let { duration, currentTime } = e.srcElement;
-    let progressPercent = (currentTime / duration) * 100;
-    barProgress.style.width = `${progressPercent}%`;
-    
-}
-
-progressContainer.addEventListener('click', setProgress);
-
-function setProgress(e) {
-    let width = this.clientWidth;
-    let clickX = e.offsetX;
-    let duration = track.duration;
-    
-    track.currentTime = (clickX / width) * duration;
-}
-
-setInterval(function(){
-    currentTime. innerHTML = formatTime(track.currentTime)
-    totalTime. innerHTML = formatTime(track.duration - track.currentTime)
-    let barProgress = document.querySelector('#progress')
-    let progressPercent = (track.currentTime / track.duration) * 100;
-    barProgress.style.width = `${progressPercent}%`;
-    
-        
-},900)
-  
-/* impostazione dati prima traccia */
-
+/* CALL FUNCTIONS */
 populateTrackList()
-changeTrackDetails()
 changePlaylistActive()
-barEvent()
-truncateTitle()
+changeTrackDetails()
+updateVolumeCursor()
+
+
+
+/* select track from sidebar */
+const playlistPlay = document.querySelectorAll('#playlist-play');
+
+
+
+playlistPlay.forEach((btn)=>{
+    btn.addEventListener('click', sidebarPlay)
+    
+})
+
+
+
