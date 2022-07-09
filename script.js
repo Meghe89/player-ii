@@ -2,80 +2,87 @@ let tracks = [
     {   url : './audio/ACDC - Thunderstruck.mp3' ,
     cover : './cover/cover acdc.jpg', artist : 'ACDC' , title : 'Thunderstruck', id: 1},
     {   url : './audio/Green Day - Boulevard of Broken Dreams.mp3' ,
-    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Boulevard Of Broken Dreams'},
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Boulevard Of Broken Dreams', id: 2},
     {   url : './audio/Guns n  Roses - Sweet Child O Mine.mp3' ,
-    cover : './cover/cover apetite for descruction.jpg', artist : `GUNS N' ROSES` , title : `Sweet Child O' Mine`},
+    cover : './cover/cover apetite for descruction.jpg', artist : `GUNS N' ROSES` , title : `Sweet Child O' Mine`, id: 3},
     {   url : './audio/Maneskin - Amandoti.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Amandoti'},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Amandoti', id: 4 },
     {   url : './audio/ACDC - Shoot to Thrill.mp3' ,
-    cover : './cover/cover back in black.jpg', artist : 'ACDC' , title : 'Shoot to Thrill'},
+    cover : './cover/cover back in black.jpg', artist : 'ACDC' , title : 'Shoot to Thrill', id: 5},
     {   url : './audio/Green Day - Holiday.mp3' ,
-    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Holiday'},
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Holiday', id: 6},
+    {   url : `./audio/Guns N Roses - Don't Damn Me.mp3` ,
+    cover : './cover/cover use your illusion.jpg', artist : `GUNS N'ROSES` , title : `Don't Damn Me`, id: 7},
     {   url : './audio/Pink Floyd - Another Brick In The Wall.mp3' ,
-    cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Another Brick In The Wall'},
+    cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Another Brick In The Wall', id: 7},
     {   url : './audio/All American Rejects - Gives You Hell.mp3' ,
-    cover : './cover/cover When The World Comes Down.jpg', artist : 'ALL AMERICAN REJECTS' , title : 'Gives You Hell'},
+    cover : './cover/cover When The World Comes Down.jpg', artist : 'ALL AMERICAN REJECTS' , title : 'Gives You Hell', id: 8},
     {   url : './audio/Måneskin - Chosen.mp3' ,
-    cover : './cover/cover chosen.jpg', artist : 'MANESKIN' , title : 'Chosen'},
+    cover : './cover/cover chosen.jpg', artist : 'MANESKIN' , title : 'Chosen', id: 9},
     {   url : './audio/Placebo - Every Me And Every You.mp3' ,
-    cover : `./cover/cover without you i'm nothing.jpg`, artist : 'PLACEBO' , title : 'Every Me And Every You'},
+    cover : `./cover/cover without you i'm nothing.jpg`, artist : 'PLACEBO' , title : 'Every Me And Every You', id: 10},
     {   url : './audio/Måneskin - Supermodel.mp3',
-    cover : './cover/cover Supermodel.jpg', artist: 'MANESKIN',  title : 'Supermodel'},
+    cover : './cover/cover Supermodel.jpg', artist: 'MANESKIN',  title : 'Supermodel', id: 11},
     {   url : './audio/Jeff Buckley - Grace.mp3' ,
-    cover : './cover/cover grace.jpg', artist : 'JEFF BUCKLEY' , title : 'Grace'},
+    cover : './cover/cover grace.jpg', artist : 'JEFF BUCKLEY' , title : 'Grace', id: 12},
     {   url : './audio/Muse - Hysteria.mp3' ,
-    cover : './cover/cover absolution.jpg', artist : 'MUSE' , title : 'Hysteria'},
+    cover : './cover/cover absolution.jpg', artist : 'MUSE' , title : 'Hysteria', id: 13},
+    {   url : './audio/Guns N Roses- Dont Cry (Alt Version).mp3' ,
+    cover : './cover/cover use your illusion 2.jpg', artist : `GUNS N' ROSES` , title : `Don't Cry (Alt)`, id: 14},
     {   url : './audio/Omnia - Free Ra Huri.mp3' ,
-    cover : './cover/cover Musick and Poëtree.jpg', artist : 'OMNIA' , title : 'Free Ra Huri'},
+    cover : './cover/cover Musick and Poëtree.jpg', artist : 'OMNIA' , title : 'Free Ra Huri', id: 15},
     {   url : '/audio/Elton John - Rocket Man.mp3' ,
-    cover : './cover/Cover Honky Chateau.jpg', artist : 'ELTON JOHN' , title : 'Rocket Man'},
+    cover : './cover/Cover Honky Chateau.jpg', artist : 'ELTON JOHN' , title : 'Rocket Man', id: 16},
     {   url : `./audio/Red Hot Chili Peppers - Shes Only 18.mp3` ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : `She's Only 18`},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : `She's Only 18`, id: 17},
+    {   url : './audio/Placebo - Running Up That Hill.mp3' ,
+    cover : './cover/cover Sleeping with Ghosts.jpg', artist : 'PLACEBO' , title : 'Running Up That Hill', id: 18},
     {   url : './audio/Maneskin - I Wanna Be Your Slave.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : `I Wanna Be Your Slave`},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : `I Wanna Be Your Slave`, id: 19},
     {   url : `./audio/4 Non Blondes - What's Up .mp3` ,
-    cover : './cover/cover bigger.jpg', artist : '4 NON BLONDES' , title : `What's Up`},
+    cover : './cover/cover bigger.jpg', artist : '4 NON BLONDES' , title : `What's Up`, id: 20},
     {   url : './audio/Guns n Roses - Dont Cry.mp3' ,
-    cover : './cover/cover use your illusion.jpg', artist : `GUNS N' ROSES` , title : `Don't Cry`},
+    cover : './cover/cover use your illusion.jpg', artist : `GUNS N' ROSES` , title : `Don't Cry`, id: 21},
     {   url : './audio/Måneskin - Coraline.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Coraline'},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Coraline', id: 22},
     {   url : './audio/Beatles - Let It Be.mp3' ,
-    cover : './cover/cover Let It Be.jpg', artist : 'BEATLES' , title : 'Let It Be'},
+    cover : './cover/cover Let It Be.jpg', artist : 'BEATLES' , title : 'Let It Be', id: 23},
     {   url : './audio/Green Day - Stray Heart.mp3' ,
-    cover : './cover/cover ¡dos!.jpg', artist : 'GREEN DAY' , title : 'Stray Heart'},
+    cover : './cover/cover ¡dos!.jpg', artist : 'GREEN DAY' , title : 'Stray Heart', id: 24},
+    {   url : './audio/Kate Bush - Running Up That Hill (A Deal With God).mp3' ,
+    cover : './cover/cover hunds of love.jpg', artist : 'KATE BUSH' , title : 'Running Up That Hill (A Deal With God)', id: 25},
     {   url : 'audio/Pink Floyd - Comfortably Numb.mp3' ,
-    cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Comfortambly Numb'},
+    cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Comfortambly Numb', id: 26},
     {   url : './audio/Red Hot Chili Peppers - Tell Me Baby.mp3' ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Tell Me Baby'},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Tell Me Baby', id: 27},
     {   url : './audio/Green Day - Wake Me Up When September Ends.mp3' ,
-    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Wake Me Up When September Ends'},
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Wake Me Up When September Ends', id: 28},
     {   url : './audio/Red Hot Chili Peppers - Dani California.mp3' ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Dani California'},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Dani California', id: 29},
+    {   url : './audio/Guns N Roses - November Rain.mp3' ,
+    cover : './cover/cover use your illusion.jpg', artist : `GUNS N' ROSES` , title : 'November Rain', id: 30},
     {   url : './audio/Green Day - 21 Guns.mp3' ,
-    cover : './cover/cover 21st Century Breakdown.jpg', artist : 'GREEN DAY' , title : '21 Guns'},
+    cover : './cover/cover 21st Century Breakdown.jpg', artist : 'GREEN DAY' , title : '21 Guns', id: 31},
     {   url : './audio/Red Hot Chili Peppers - Scar Tissue.mp3' ,
-    cover : './cover/cover californication.jpg', artist : 'RHCP' , title : 'Scar Tissue'},
+    cover : './cover/cover californication.jpg', artist : 'RHCP' , title : 'Scar Tissue', id: 32},
     {   url : `./audio/Guns n Roses - Knockin' on Heaven's Door.mp3` ,
-    cover : './cover/cover use your illusion 2.jpg', artist : `GUNS N' ROSES` , title : `Knockin' on Heaven's Door`},
+    cover : './cover/cover use your illusion 2.jpg', artist : `GUNS N' ROSES` , title : `Knockin' on Heaven's Door`, id: 33},
     {   url : './audio/Måneskin - Vent Anni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : `Vent' Anni`},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : `Vent' Anni`, id: 34},
     {   url : './audio/Red Hot Chili Peppers - Stadium Arcadium.mp3' ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Stadium Arcadium'},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Stadium Arcadium', id: 35},
     {   url : 'audio/Pink Floyd - Wish You Were Here.mp3',
-    cover : './cover/cover whish you where here.jpg', artist : 'PINK FLOYD' , title : 'Whish You Where Here'},
+    cover : './cover/cover whish you where here.jpg', artist : 'PINK FLOYD' , title : 'Whish You Where Here', id: 36},
     {   url : './audio/Maneskin - Torna A Casa.mp3' ,
-    cover : './cover/cover il ballo della vita.jpg', artist : 'MANESKIN' , title : `Torna A Casa`},
+    cover : './cover/cover il ballo della vita.jpg', artist : 'MANESKIN' , title : `Torna A Casa`, id: 37},
     {   url : './audio/Queen - Radio Ga Ga.mp3' ,
-    cover : './cover/cover the works.jpg', artist : 'QUEEN' , title : 'Radio Ga Ga'},
+    cover : './cover/cover the works.jpg', artist : 'QUEEN' , title : 'Radio Ga Ga', id: 38},
     {   url : './audio/Green Day - American Idiot.mp3' ,
-    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot'},    
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot', id: 39},    
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni'},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id: 40},
    
 ]
-
-
-/* SELECTORS */
 
 /* btns */
 const plailystBtn = document.querySelector('#playlist-btn');
@@ -84,7 +91,6 @@ const pauseBtn = document.querySelector('#pause-btn');
 const rightBtn = document.querySelector('#right-btn');
 const leftBtn = document.querySelector('#left-btn');
 const shuffleBtn = document.querySelector('#shuffle-btn');
-
 
 /* track */
 const playlist = document.querySelector('.playlist');
@@ -102,9 +108,6 @@ const volumeIcon = document.querySelector('#volume-icon');
 const volumeSlider = document.querySelector('#volume-slider');
 const volumeCursor = document.querySelector('#volume-cursor');
 const volumeCursorHandle = document.querySelector('#volume-cursor');
-
-
-
 
 /* time */
 const currentTime = document.querySelector('#current-time');
@@ -418,6 +421,3 @@ playlistPlay.forEach((btn)=>{
     btn.addEventListener('click', sidebarPlay)
     
 })
-
-
-
