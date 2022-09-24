@@ -7,6 +7,8 @@ let tracks = [
     cover : './cover/cover apetite for descruction.jpg', artist : `GUNS N' ROSES` , title : `Sweet Child O' Mine`},
     {   url : './audio/Maneskin - Amandoti.mp3' ,
     cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Amandoti' },
+    {   url : `./audio/Gloria Gaynor - I Will Survive.mp3` ,
+    cover : './cover/cover love tracks.jpg', artist : 'GLORIA GAYNOR' , title : `I Will Survive`},
     {   url : './audio/ACDC - Shoot to Thrill.mp3' ,
     cover : './cover/cover back in black.jpg', artist : 'ACDC' , title : 'Shoot to Thrill'},
     {   url : './audio/Green Day - Holiday.mp3' ,
@@ -23,6 +25,8 @@ let tracks = [
     cover : `./cover/cover without you i'm nothing.jpg`, artist : 'PLACEBO' , title : 'Every Me And Every You'},
     {   url : './audio/Måneskin - Supermodel.mp3',
     cover : './cover/cover Supermodel.jpg', artist: 'MANESKIN',  title : 'Supermodel'},
+    {   url : './audio/Queen - Fat Bottomed Girls.mp3',
+    cover : './cover/cover jazz.jpg', artist: 'QUEEN',  title : 'Fat Bottomed Girls'},
     {   url : './audio/Jeff Buckley - Grace.mp3' ,
     cover : './cover/cover grace.jpg', artist : 'JEFF BUCKLEY' , title : 'Grace'},
     {   url : './audio/Muse - Hysteria.mp3' ,
@@ -31,10 +35,14 @@ let tracks = [
     cover : './cover/cover use your illusion 2.jpg', artist : `GUNS N' ROSES` , title : `Don't Cry (Alt)`},
     {   url : './audio/Omnia - Free Ra Huri.mp3' ,
     cover : './cover/cover Musick and Poëtree.jpg', artist : 'OMNIA' , title : 'Free Ra Huri'},
+    {   url : './audio/Guns N Roses - Paradise City.mp3' ,
+    cover : './cover/cover apetite for descruction.jpg', artist : `GUNS N' ROSES` , title : 'Paradise City'},
     {   url : '/audio/Elton John - Rocket Man.mp3' ,
     cover : './cover/Cover Honky Chateau.jpg', artist : 'ELTON JOHN' , title : 'Rocket Man'},
     {   url : `./audio/Red Hot Chili Peppers - Shes Only 18.mp3` ,
     cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : `She's Only 18`},
+    {   url : `./audio/Slash, Derek Sherinian, Billy Idol - In the Summertime!.mp3` ,
+    cover : './cover/cover in the summertime.jpg', artist : 'SLASH, BILLY IDOL' , title : `In the Summertime`},
     {   url : './audio/Placebo - Running Up That Hill.mp3' ,
     cover : './cover/cover Sleeping with Ghosts.jpg', artist : 'PLACEBO' , title : 'Running Up That Hill'},
     {   url : './audio/Maneskin - I Wanna Be Your Slave.mp3' ,
@@ -47,6 +55,8 @@ let tracks = [
     cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Coraline'},
     {   url : './audio/Beatles - Let It Be.mp3' ,
     cover : './cover/cover Let It Be.jpg', artist : 'BEATLES' , title : 'Let It Be'},
+    {   url : './audio/David Bowie - Heroes Lyrics.mp3' ,
+    cover : './cover/cover heroes.jpg', artist : 'DAVID BOWIE' , title : 'Heroes'},
     {   url : './audio/Green Day - Stray Heart.mp3' ,
     cover : './cover/cover ¡dos!.jpg', artist : 'GREEN DAY' , title : 'Stray Heart'},
     {   url : './audio/Kate Bush - Running Up That Hill (A Deal With God).mp3' ,
@@ -55,6 +65,8 @@ let tracks = [
     cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Comfortambly Numb'},
     {   url : './audio/Red Hot Chili Peppers - Tell Me Baby.mp3' ,
     cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Tell Me Baby'},
+    {   url : './audio/Queen - Bohemian Rhapsody.mp3' ,
+    cover : './cover/cover a night at the opera.jpg', artist : 'QUEEN' , title : 'Bohemian Rhapsody'},
     {   url : './audio/Green Day - Wake Me Up When September Ends.mp3' ,
     cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'Wake Me Up When September Ends'},
     {   url : './audio/Red Hot Chili Peppers - Dani California.mp3' ,
@@ -63,6 +75,8 @@ let tracks = [
     cover : './cover/cover use your illusion.jpg', artist : `GUNS N' ROSES` , title : 'November Rain'},
     {   url : './audio/Green Day - 21 Guns.mp3' ,
     cover : './cover/cover 21st Century Breakdown.jpg', artist : 'GREEN DAY' , title : '21 Guns'},
+    {   url : `./audio/Queen - Don't Stop Me Now.mp3` ,
+    cover : './cover/cover jazz.jpg', artist : 'QUEEN' , title : `Don't Stop Me Now`},
     {   url : './audio/Red Hot Chili Peppers - Scar Tissue.mp3' ,
     cover : './cover/cover californication.jpg', artist : 'RHCP' , title : 'Scar Tissue'},
     {   url : `./audio/Guns n Roses - Knockin' on Heaven's Door.mp3` ,
@@ -79,8 +93,10 @@ let tracks = [
     cover : './cover/cover the works.jpg', artist : 'QUEEN' , title : 'Radio Ga Ga'},
     {   url : './audio/Green Day - American Idiot.mp3' ,
     cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot'},    
+    {   url : './audio/Nirvana - Smells Like Teen Spirit.mp3' ,
+    cover : './cover/cover nevermind.jpg', artist : 'NIRVANA' , title : ' Smells Like Teen Spirit'},    
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni'},   
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni'},
 ]
 
 /* btns */
@@ -117,6 +133,7 @@ const songLength = document.querySelector('.song-length');
 /* variabili globali per traccia */
 let playing = false;
 let currentTrack = 0;
+let totalTracks = tracks.length
 let random = false;
 let volume = track.volume;
 let grabbedVol = false;
@@ -159,8 +176,7 @@ function populateTrackList() {
         }
         if (!playing) {
             play()
-        } 
-       
+        }
     }))
 }
 
@@ -199,7 +215,8 @@ function play() {
 
 function next() {
     if (!random) {
-        currentTrack++        
+        currentTrack++
+        console.log(totalTracks);        
     } else {
         currentTrack = [Math.floor(Math.random() * tracks.length)]
     }
@@ -217,17 +234,15 @@ function next() {
 
 function prev() {
     if (!random) {
-        currentTrack--        
+        currentTrack--
+        console.log(currentTrack);          
     } else {
         currentTrack = [Math.floor(Math.random() * tracks.length)]
     }
 
     if (currentTrack < 0) {
         currentTrack = tracks.length -1
-    }
-
-   
-    
+    }    
     changeTrackDetails()
     controlPlaying()
     changePlaylistActive()
@@ -239,8 +254,6 @@ function controlPlaying() {
         play()
     }
 }
-
-
 
 setInterval(function() {    
    currentTime.innerHTML = formatTime(track.currentTime)
