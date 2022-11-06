@@ -10,7 +10,7 @@
     <!-- custom css -->
     <link rel="stylesheet" href="style.css">
     <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/4b900035da.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4b900035da.js" crossorigin="anonymous" defer></script>
     <!-- custom js -->
     <script src="./script.js" defer></script>
 </head>
@@ -24,9 +24,14 @@
         <img src="./cover/cover acdc.jpg" alt="cover" id="background-image">
     </div>
 
-    <section class="playlist bg-dark tc-white">
-        
-        
+    <section class="playlist bg-dark tc-white">       
+    </section>
+
+    <section class="search bg-dark tc-white">
+        <div class="search-container">
+            <input type="text" id="search-input" class="font-cursive" placeholder="search song">
+            <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
     </section>
 
     <section class="container">

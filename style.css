@@ -68,11 +68,12 @@
 }
 
 body{
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
     /* border: 3px solid red; */
 }
 
@@ -125,7 +126,6 @@ body{
     width: 200px;
     height: 200px;
     border-radius: 50%;
-     
     background-position: center;
     background-size: cover;
 }
@@ -173,23 +173,55 @@ body{
     display: none!important;
 }
 
-.playlist{
+.playlist,
+.search{
     border: 1px solid #000;
     height: 100vh;
     width:300px;
     position: absolute;
     top: 0;
-    left: -1000px;
-    z-index: 1;
     transition: all .9s;
     border-radius: 4px;
     overflow-y: scroll;
     z-index: 999;
 }
 
+.playlist {
+    left: -1000px;
+}
+
+.search-container {
+    display: flex;
+}
+
+.fa-napster {
+    cursor: pointer;
+}
+
+.search {
+    right: -1000px;
+}
+
+#search-btn {
+    padding: 0 10px;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.search input {
+    width: 100%;
+    height: 35px;
+}
+
 .playlist-toggle{
     left: 0;
 }
+
+.search-toggle {
+    right: 0;
+}
+
 .controls-left{
     display: flex;
     flex-direction: column;
@@ -398,3 +430,21 @@ body{
     }
 }
 
+@media screen and (max-width:550px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .top {
+        height: 6%;
+    }
+
+    .center {
+        height: 80%;
+    }
+
+    .bottom {
+        height: 10%;
+    }
+}
