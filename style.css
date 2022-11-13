@@ -430,7 +430,7 @@ body{
     }
 }
 
-@media screen and (max-width:550px) {
+/* @media screen and (max-width:550px) {
     .container {
         width: 100vw;
         height: 100vh;
@@ -447,4 +447,4 @@ body{
     .bottom {
         height: 10%;
     }
-}
+} */

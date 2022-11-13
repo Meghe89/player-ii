@@ -94,9 +94,11 @@ let tracks = [
     {   url : './audio/Green Day - American Idiot.mp3' ,
     cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot', id:47},    
     {   url : '/audio/Nirvana - Smells Like Teen Spirit.mp3' ,
-    cover : './cover/cover nevermind.jpg', artist : 'NIRVANA' , title : ' Smells Like Teen Spirit', id:48},    
+    cover : './cover/cover nevermind.jpg', artist : 'NIRVANA' , title : ' Smells Like Teen Spirit', id:48},
+    {   url : '/audio/Green Day - Time of Your Life(Good Riddance).mp3' ,
+    cover : './cover/cover nimrod.jpg', artist : 'GREEN DAY' , title : 'Time Of Your Life (Good Riddance)', id:49},    
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:49},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:50},
 ]
 
 /* btns */
@@ -148,27 +150,27 @@ function populateTrackList(tracks,side) {
     tracks.forEach((track)=>{
         let card = document.createElement('div');
         card.innerHTML = '';
-
+        
         card.classList.add('track-playlist');
         card.innerHTML = 
         `
         <div class="track-card">
-            <div class="mini-cd ">
-                <img class="thumbnail ml-3" src="${track.cover}" alt="copertina">
-            </div>
-            <div class="playlist-title">
-                <span class="tc-green track-artist font-cursive">${track.artist}</span>
-                <span class="tc-accent font-cursive">${track.title}</span>
-            </div>
-            
-                <i data-track="${track.id -1}" id="playlist-play" class="fa-solid fa-circle-play tc-blue playlist-id fa-3x"></i>
-                <i id="playlist-pause" class="fa-solid fa-circle-pause tc-blue fa-3x "></i>
-            
-            </div
+        <div class="mini-cd ">
+        <img class="thumbnail ml-3" src="${track.cover}" alt="copertina">
+        </div>
+        <div class="playlist-title">
+        <span class="tc-green track-artist font-cursive">${track.artist}</span>
+        <span class="tc-accent font-cursive">${track.title}</span>
+        </div>
+        
+        <i data-track="${track.id -1}" id="playlist-play" class="fa-solid fa-circle-play tc-blue playlist-id fa-3x"></i>
+        <i id="playlist-pause" class="fa-solid fa-circle-pause tc-blue fa-3x "></i>
+        
+        </div
         `
         side.appendChild(card);
     });
-
+    
     let playBtns = document.querySelectorAll('.playlist-id');
     playBtns.forEach(btn=>btn.addEventListener('click', ()=>{
         let selectedTrack = btn.getAttribute('data-track');
@@ -198,11 +200,16 @@ function changePlaylistActive(){
 
 
 function playlistToggle() {
-    playlist.classList.toggle('playlist-toggle')
+    playlist.classList.toggle('playlist-toggle');
+    search.classList.remove('search-toggle');
 }
 
 function searchToggle() {
+    searchInput.value = '';
+    playlist.classList.remove('playlist-toggle');
     search.classList.toggle('search-toggle');
+    
+    emptySearchCard();
 }
 
 function play() {
@@ -224,16 +231,14 @@ function play() {
 function next() {
     if (!random) {
         currentTrack++
-        console.log(totalTracks);        
     } else {
         currentTrack = [Math.floor(Math.random() * tracks.length)]
     }
-
+    
     if (currentTrack > tracks.length -1) {
         currentTrack = 0
     }
     
-        
     changeTrackDetails()
     controlPlaying() 
     changePlaylistActive()
@@ -243,11 +248,10 @@ function next() {
 function prev() {
     if (!random) {
         currentTrack--
-        console.log(currentTrack);          
     } else {
         currentTrack = [Math.floor(Math.random() * tracks.length)]
     }
-
+    
     if (currentTrack < 0) {
         currentTrack = tracks.length -1
     }    
@@ -264,9 +268,9 @@ function controlPlaying() {
 }
 
 setInterval(function() {    
-   currentTime.innerHTML = formatTime(track.currentTime)
-   timeLeft.innerHTML = formatTime(track.duration-track.currentTime);   
-   updateProgress()
+    currentTime.innerHTML = formatTime(track.currentTime)
+    timeLeft.innerHTML = formatTime(track.duration-track.currentTime);   
+    updateProgress()
 },900)
 
 
@@ -307,7 +311,7 @@ function randomTrack() {
 
 function updateProgress() {
     let progressPercent = parseFloat((track.currentTime / track.duration) * 100).toFixed(2);    
-   
+    
     songCurrent.style.width = `${progressPercent}%`    
 }
 
@@ -321,8 +325,10 @@ function setProgress(e) {
 }
 
 function buttonsEvents(ev) {
-    if (ev.code === 'Space') {
-        play()
+    if (search.classList.length < 4) {
+        if (ev.code === 'Space') {
+            play()
+        }        
     }
     if (ev.code === 'ArrowRight') {
         next()
@@ -348,7 +354,6 @@ function updateVolumeCursor() {
 function grabVolHandle(e) {
     grabbedVol = true;
     let x = e.offsetY;
-    console.log(x);
 }
 
 function checkVolume() {
@@ -363,19 +368,19 @@ function checkVolume() {
 
 function volumeWheel(ev) {
     if (((track.volume + ev.wheelDeltaY*0.0001) <= 1) && ((track.volume + ev.wheelDeltaY*0.0001) >= 0)) {
-       track.volume += ev.wheelDeltaY*0.0001
-       if (track.volume < 0.05) {
-           track.volume = 0
-       }
-       volume = track.volume;
-       updateVolumeCursor();
+        track.volume += ev.wheelDeltaY*0.0001
+        if (track.volume < 0.05) {
+            track.volume = 0
+        }
+        volume = track.volume;
+        updateVolumeCursor();
     }
 }
 function releaseVolHandle(e) {
     grabbedVol = false;
 }
 function grabVolHandle(e) {
-    grabbedVol = true
+    grabbedVol = true;
     let x = e.offsetY;
     if (x > 90) track.volume = 0
     if (x-6 <= 85 && x-6 >= 0) {
@@ -394,7 +399,7 @@ function grabVolHandle(e) {
 
 function dragVolHandle(e){
     if(grabbedVol){
-
+        
         let x = e.offsetY
         let position = ((-1 * (x)) / volumeBar.offsetHeight) + 1
         
@@ -406,9 +411,9 @@ function dragVolHandle(e){
             track.volume = position;
         }
         updateVolumeCursor()
-       
+        
     }
-
+    
 }
 
 /* LISTENERS */
@@ -437,16 +442,28 @@ updateVolumeCursor()
 
 /* select track from sidebar */
 
-searchInput.addEventListener('input' , (e)=>{
-
-    if (e.target.value.length > 3) {
+searchInput.addEventListener('input' , (e)=>{    
+    if (e.target.value.length == 3) {        
         let searched = e.target.value;
         
-        let artist = tracks.filter(track=>track.artist.toLowerCase().includes(searched.toLowerCase()))
-
+        let artist = tracks.filter(track=>track.artist.toLowerCase().includes(searched.toLowerCase()));
         let title = tracks.filter(track=>track.title.toLowerCase().includes(searched.toLowerCase()));
-
-        populateTrackList(title,search);
-        populateTrackList(artist,search);
-    } 
+        
+        if (search.children.length == 1) {
+            populateTrackList(title,search);
+            populateTrackList(artist,search);
+        }
+        searchInput.removeEventListener('input', (e))
+    } else if (e.target.value.length < 3) {
+        emptySearchCard();    
+    }
 })
+
+function emptySearchCard() {
+    let children = search.children;
+    Array.from(children).forEach(children=>{        
+        if (children.className == 'track-playlist') {
+            children.remove();
+        }
+    })
+}
