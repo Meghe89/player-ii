@@ -430,10 +430,16 @@ body{
     }
 }
 
-/* @media screen and (max-width:550px) {
+@media screen and (max-width:550px) {
     .container {
         width: 100vw;
         height: 100vh;
+    }
+
+    .controls-left,
+    .controls-center,
+    .controls-right {
+        width: 33%!important;
     }
 
     .top {
@@ -441,10 +447,10 @@ body{
     }
 
     .center {
-        height: 80%;
+        height: 84%;
     }
 
     .bottom {
         height: 10%;
     }
-} */
+}

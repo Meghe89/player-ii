@@ -97,8 +97,16 @@ let tracks = [
     cover : './cover/cover nevermind.jpg', artist : 'NIRVANA' , title : ' Smells Like Teen Spirit', id:48},
     {   url : '/audio/Green Day - Time of Your Life(Good Riddance).mp3' ,
     cover : './cover/cover nimrod.jpg', artist : 'GREEN DAY' , title : 'Time Of Your Life (Good Riddance)', id:49},    
+    {   url : './audio/Kiss - Rock and Roll all Night.mp3' ,
+    cover : './cover/cover dressed to kill.jpg', artist : 'KISS' , title : 'Rock And Roll All Night', id:50},
+    {   url : './audio/Kiss - Detroit Rock City.mp3' ,
+    cover : './cover/cover destroyer.jpg', artist : 'KISS' , title : 'Detroit Rock City', id:51},
+    {   url : './audio/Kiss - I Was Made For Loving You.mp3' ,
+    cover : './cover/cover dynasty.jpg', artist : 'KISS' , title : 'I Was Made For Loving You', id:52},
+    {   url : './audio/Red Hot Chili Peppers - Snow (Hey-oh).mp3' ,
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Snow (Hey-oh)', id:53},
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:50},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:54},
 ]
 
 /* btns */
@@ -228,11 +236,14 @@ function play() {
     }
 }
 
+let test = []
+
 function next() {
     if (!random) {
         currentTrack++
     } else {
-        currentTrack = [Math.floor(Math.random() * tracks.length)]
+        shuffle(tracks)
+        //currentTrack = [Math.floor(Math.random() * tracks.length)]
     }
     
     if (currentTrack > tracks.length -1) {
@@ -244,6 +255,25 @@ function next() {
     changePlaylistActive()
     
 }
+
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+    
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+        
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        
+        
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+        
+        return array;
+    }
 
 function prev() {
     if (!random) {
@@ -325,7 +355,7 @@ function setProgress(e) {
 }
 
 function buttonsEvents(ev) {
-    if (search.classList.length < 4) {
+    if (search.classList.length = 3) {
         if (ev.code === 'Space') {
             play()
         }        
