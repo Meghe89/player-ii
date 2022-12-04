@@ -253,7 +253,7 @@ function next() {
     changeTrackDetails()
     controlPlaying() 
     changePlaylistActive()
-    
+    sidebarsRemove();
 }
 
 function prev() {
@@ -269,6 +269,7 @@ function prev() {
     changeTrackDetails()
     controlPlaying()
     changePlaylistActive()
+    sidebarsRemove();
 }
 
 function controlPlaying() {
