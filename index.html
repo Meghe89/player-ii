@@ -15,24 +15,24 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-
+    
     <!-- audio tag -->
     <audio id="track" src="./audio/ACDC - Thunderstruck.mp3"></audio>
-
+    
     <!-- background -->
     <div>
         <img src="./cover/cover acdc.jpg" alt="cover" id="background-image">
     </div>
-
+    
     <section class="playlist bg-dark tc-white">       
     </section>
-
+    
     <section class="search bg-dark tc-white">
         <div class="search-container">
             <input type="text" id="search-input" class="font-cursive" placeholder="search song">
         </div>
     </section>
-
+    
     <section class="container">
         <div class="top bg-dark tc-green">
             <span><i class="fa-brands fa-napster fa-2x"></i></span>
@@ -45,35 +45,35 @@
         </div>
         <div class="bottom bg-dark tc-accent">
             <div class="controls">
-               <div class="controls-left">
-                   <span id="track-artist" class="font-cursive"></span>
-                   <span id="track-title" class="font-cursive"></span>
-               </div>
-               <div class="controls-center">
-                   <i id="shuffle-btn" class="fa-solid fa-shuffle ml-3"></i>
-                   <i id="left-btn" class="fa-solid fa-arrow-left ml-3"></i>
-                   <i id="play-btn" class="fa-solid fa-play fa-2x ml-3"></i>
-                   <i id="pause-btn" class="fa-solid fa-pause fa-2x ml-3 d-none"></i>
-                   <i id="right-btn" class="fa-solid fa-arrow-right ml-3"></i>                   
+                <div class="controls-left">
+                    <span id="track-artist" class="font-cursive"></span>
+                    <span id="track-title" class="font-cursive"></span>
                 </div>
-               <div class="controls-right">
-                <i id="volume-icon" class="fa-solid fa-volume-high"></i>
-                   <div id="volume-btn">
-                       <div id="volume-bar" class="volume-bar" onmousedown="grabVolHandle(event)" onmouseup="releaseVolHandle(event)" onmouseenter="releaseVolHandle(event)" onmousemove="dragVolHandle(event)">
-                           <div id="volume-slider">
-                               <div id="volume-cursor">
-                                   <div id="volume-cursor-handle"></div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   
+                <div class="controls-center">
+                    <i id="shuffle-btn" class="fa-solid fa-shuffle ml-3"></i>
+                    <i id="left-btn" class="fa-solid fa-arrow-left ml-3"></i>
+                    <i id="play-btn" class="fa-solid fa-play fa-2x ml-3"></i>
+                    <i id="pause-btn" class="fa-solid fa-pause fa-2x ml-3 d-none"></i>
+                    <i id="right-btn" class="fa-solid fa-arrow-right ml-3"></i>                   
+                </div>
+                <div class="controls-right">
+                    <i id="volume-icon" class="fa-solid fa-volume-high"></i>
+                    <div id="volume-btn">
+                        <div id="volume-bar" class="volume-bar" onmousedown="grabVolHandle(event)" onmouseup="releaseVolHandle(event)" onmouseenter="releaseVolHandle(event)" onmousemove="dragVolHandle(event)">
+                            <div id="volume-slider">
+                                <div id="volume-cursor">
+                                    <div id="volume-cursor-handle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             <div class="time">
                 <span class="px-2" id="current-time" class="font-cursive"></span>
                 <div class="song-length">
-
+                    
                     <div class="song-current"></div>                
                 </div>                
                 <span class="px-2" id="time-left" class="font-cursive"></span>

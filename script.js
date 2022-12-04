@@ -236,14 +236,12 @@ function play() {
     }
 }
 
-let test = []
-
 function next() {
     if (!random) {
         currentTrack++
     } else {
-        shuffle(tracks)
-        //currentTrack = [Math.floor(Math.random() * tracks.length)]
+        currentTrack = [Math.floor(Math.random() * tracks.length)]
+        //al click su random si deve popolare un array con le canzoni mescolate
     }
     
     if (currentTrack > tracks.length -1) {
@@ -255,25 +253,6 @@ function next() {
     changePlaylistActive()
     
 }
-
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-    
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
-        
-        // Pick a remaining element.
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        
-        
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
-        }
-        
-        return array;
-    }
 
 function prev() {
     if (!random) {

@@ -6,7 +6,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+}
+
+html {
+    overflow: hidden!important;
 }
 
 /* heplers class */
@@ -77,24 +80,29 @@ body{
     /* border: 3px solid red; */
 }
 
-#background-image{
-    width: 100%;
+#background-image {
+    width: 100vw;
     height: 100vh;
-    position:absolute;
+    filter: blur(5px);
+    position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-    background-position: center;
-    background-size: cover;
-    filter: blur(5px); 
 }
 
-.container{
-    width: 300px;
-    height: 500px;
+.container {
+    width: 100vw;
+    height: 100vh;
     border-radius: 4px!important;
     box-shadow: 3px 3px 16px 8px #fbfbfb;
-    /* border: 3px solid lime; */
+}
+
+.top{
+    padding: 0 1rem;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
 }
 
 .top{
@@ -114,15 +122,15 @@ body{
     padding: 0 5px;
 }
 
-.center{
+.center {
     border: 1px solid #000;
-    height: 350px;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.circle-cd{
+.circle-cd {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -140,12 +148,14 @@ body{
 }
 
 .bottom{
-    height: 100px;    
+    height: 15%;    
 }
 
 .bottom .controls{
     height: 50px;
     display: flex;
+    justify-content: space-between;
+    padding: .5rem;
 }
 
 .bottom .controls-left,
@@ -337,7 +347,8 @@ body{
     height: 50px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 3px;
+    align-items: first baseline;
 }
 
 .song-length{
@@ -430,20 +441,31 @@ body{
     }
 }
 
-@media screen and (max-width:550px) {
-    .container {
-        width: 100vw;
-        height: 100vh;
+@media screen and (min-width: 600px) {
+    .circle-cd {
+        width: 300px;
+        height: 300px;
     }
 
-    .controls-left,
-    .controls-center,
-    .controls-right {
-        width: 33%!important;
+    .circle-cd.active {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .circle-cd {
+        width: 350px;
+        height: 350px;
     }
 
-    .top {
-        height: 6%;
+    .circle-cd.active {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .time{
+        align-items: center;
     }
 
     .center {
@@ -451,6 +473,6 @@ body{
     }
 
     .bottom {
-        height: 10%;
+        height: 11%;
     }
 }
