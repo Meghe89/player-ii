@@ -296,10 +296,10 @@ function formatTime(sec){
 }
 
 function truncateTitle(str) {
-    if (str.length < 6){
+    if (str.length < 5){
         return str
     } else {
-        return str.substr(0, 6) + '...'
+        return str.substr(0, 5) + '...';
     }
 }
 
