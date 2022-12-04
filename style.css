@@ -124,7 +124,7 @@ body{
 
 .center {
     border: 1px solid #000;
-    height: 80%;
+    height: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,7 +148,7 @@ body{
 }
 
 .bottom{
-    height: 15%;    
+    height: 27%;    
 }
 
 .bottom .controls{
@@ -466,13 +466,10 @@ body{
     
     .time{
         align-items: center;
+        height: 22px;
     }
 
     .center {
-        height: 84%;
-    }
-
-    .bottom {
-        height: 11%;
+        height: 77%;
     }
 }
