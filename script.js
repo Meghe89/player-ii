@@ -81,34 +81,48 @@ let tracks = [
     cover : './cover/cover californication.jpg', artist : 'RHCP' , title : 'Scar Tissue', id:40},
     {   url : `./audio/Guns n Roses - Knockin' on Heaven's Door.mp3` ,
     cover : './cover/cover use your illusion 2.jpg', artist : `GUNS N' ROSES` , title : `Knockin' on Heaven's Door`, id:41},
+    {   url : `./audio/Rolling Stones - Sympaty For The Devil.mp3` ,
+    cover : './cover/cover Gimme Shelter.jpg', artist : `ROLLING STONES` , title : `Sympaty For The Devil`, id:42},
     {   url : './audio/Måneskin - Vent Anni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : `Vent' Anni`, id:42},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : `Vent' Anni`, id:43},
     {   url : './audio/Red Hot Chili Peppers - Stadium Arcadium.mp3' ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Stadium Arcadium', id:43},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Stadium Arcadium', id:44},
     {   url : '/audio/Nirvana - Smells Like Teen Spirit.mp3' ,
-    cover : './cover/cover nevermind.jpg', artist : 'NIRVANA' , title : ' Smells Like Teen Spirit', id:44},
+    cover : './cover/cover nevermind.jpg', artist : 'NIRVANA' , title : ' Smells Like Teen Spirit', id:45},
     {   url : './audio/Maneskin - Torna A Casa.mp3' ,
-    cover : './cover/cover il ballo della vita.jpg', artist : 'MANESKIN' , title : `Torna A Casa`, id:45},
+    cover : './cover/cover il ballo della vita.jpg', artist : 'MANESKIN' , title : `Torna A Casa`, id:46},
     {   url : './audio/Queen - Radio Ga Ga.mp3' ,
-    cover : './cover/cover the works.jpg', artist : 'QUEEN' , title : 'Radio Ga Ga', id:46},
+    cover : './cover/cover the works.jpg', artist : 'QUEEN' , title : 'Radio Ga Ga', id:47},
     {   url : './audio/Green Day - American Idiot.mp3' ,
-    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot', id:47},    
+    cover : './cover/cover american idiot.jpg', artist : 'GREEN DAY' , title : 'American Idiot', id:48},    
     {   url : 'audio/Pink Floyd - Wish You Were Here.mp3',
-    cover : './cover/cover whish you where here.jpg', artist : 'PINK FLOYD' , title : 'Whish You Where Here', id:48},
+    cover : './cover/cover whish you where here.jpg', artist : 'PINK FLOYD' , title : 'Whish You Where Here', id:49},
     {   url : '/audio/Green Day - Time of Your Life(Good Riddance).mp3' ,
-    cover : './cover/cover nimrod.jpg', artist : 'GREEN DAY' , title : 'Time Of Your Life (Good Riddance)', id:49},    
+    cover : './cover/cover nimrod.jpg', artist : 'GREEN DAY' , title : 'Time Of Your Life (Good Riddance)', id:50},    
     {   url : './audio/Kiss - Rock and Roll all Night.mp3' ,
-    cover : './cover/cover dressed to kill.jpg', artist : 'KISS' , title : 'Rock And Roll All Night', id:50},
+    cover : './cover/cover dressed to kill.jpg', artist : 'KISS' , title : 'Rock And Roll All Night', id:51},
+    {   url : './audio/Rolling Stones - (I Cant Get No) Satisfaction.mp3' ,
+    cover : './cover/cover Gimme Shelter.jpg', artist : 'ROLLING STONES' , title : '(I Cant Get No) Satisfaction', id:52},
     {   url : './audio/Kiss - Detroit Rock City.mp3' ,
-    cover : './cover/cover destroyer.jpg', artist : 'KISS' , title : 'Detroit Rock City', id:51},
+    cover : './cover/cover destroyer.jpg', artist : 'KISS' , title : 'Detroit Rock City', id:53},
     {   url : './audio/Kiss - I Was Made For Loving You.mp3' ,
-    cover : './cover/cover dynasty.jpg', artist : 'KISS' , title : 'I Was Made For Loving You', id:52},
+    cover : './cover/cover dynasty.jpg', artist : 'KISS' , title : 'I Was Made For Loving You', id:54},
+    {   url : './audio/Joan Jett - I Hate Myself For Loving You.mp3' ,
+    cover : './cover/cover up your alley.jpg', artist : 'JOAN JETT' , title : 'I Hate Myself For Loving You', id:55},
     {   url : './audio/Red Hot Chili Peppers - Snow (Hey-oh).mp3' ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Snow (Hey-oh)', id:53},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Snow (Hey-oh)', id:56},
     {   url : './audio/Manesktin - The Loneliest.mp3' ,
-    cover : './cover/cover rush.jpg', artist : 'MANESKIN' , title : 'The Loneliest', id:54},
+    cover : './cover/cover rush.jpg', artist : 'MANESKIN' , title : 'The Loneliest', id:57},
+    {   url : './audio/Queen - Under Pressure.mp3' ,
+    cover : './cover/cover hot space.jpg', artist : 'QUEEN' , title : 'Under Pressure', id:58},
+    {   url : './audio/Rolling Stones - Gimme Shelter.mp3' ,
+    cover : './cover/cover Gimme Shelter.jpg', artist : 'ROLLING STONES' , title : 'Gimme Shelter', id:59},
+    {   url : `./audio/Joan Jett - I Love Rock n Roll.mp3` ,
+    cover : './cover/cover I love rock n roll.jpg', artist : 'JOAN JETT' , title : `I Love Rock 'N Roll`, id:60},
+    {   url : `./audio/The Doors - Roadhouse Blues.mp3` ,
+    cover : './cover/cover morrison hotel.jpg', artist : 'THE DOORS' , title : `Roadhouse Blues`, id:61},
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:55},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:62},
 ]
 
 /* btns */
@@ -134,7 +148,7 @@ const backgroundImage = document.querySelector('#background-image');
 /* volume */
 const volumeBtn = document.querySelector('#volume-btn');
 const volumeBar = document.querySelector('#volume-bar');
-const volumeIcon = document.querySelector('#volume-icon');
+const volumeIcon = document.querySelector('#volume-icon')
 const volumeSlider = document.querySelector('#volume-slider');
 const volumeCursor = document.querySelector('#volume-cursor');
 const volumeCursorHandle = document.querySelector('#volume-cursor');
@@ -241,9 +255,11 @@ function play() {
 function next() {
     if (!random) {
         currentTrack++
+        songError()
     } else {
         currentTrack = [Math.floor(Math.random() * tracks.length)]
         //al click su random si deve popolare un array con le canzoni mescolate
+        songError()
     }
     
     if (currentTrack > tracks.length -1) {
@@ -254,6 +270,14 @@ function next() {
     controlPlaying() 
     changePlaylistActive()
     sidebarsRemove();
+}
+
+function songError() {
+    setTimeout(() => {
+        if (timeLeft.textContent == 'NaN.NaN') {
+            currentTrack++
+        }
+    }, 5000);
 }
 
 function prev() {
