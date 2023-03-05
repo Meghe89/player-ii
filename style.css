@@ -164,7 +164,7 @@ body{
     width: 133px;
     height: 100%;
     display: flex;
-    align-items: center;    
+    align-items: center;
 }
 /* .bottom .controls-left{
     width: 170px;
@@ -236,6 +236,20 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width : 60px;
+    min-width: 7rem;
+}
+
+.custom_animation {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
 .track-playlist{

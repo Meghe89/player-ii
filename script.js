@@ -62,7 +62,7 @@ let tracks = [
     {   url : './audio/Kate Bush - Running Up That Hill (A Deal With God).mp3' ,
     cover : './cover/cover hunds of love.jpg', artist : 'KATE BUSH' , title : 'Running Up That Hill (A Deal With God)', id:31},
     {   url : 'audio/Pink Floyd - Comfortably Numb.mp3' ,
-    cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Comfortambly Numb', id:32},
+    cover : './cover/cover the wall.jpg', artist : 'PINK FLOYD' , title : 'Comfortably Numb', id:32},
     {   url : './audio/Red Hot Chili Peppers - Tell Me Baby.mp3' ,
     cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Tell Me Baby', id:33},
     {   url : './audio/Queen - Bohemian Rhapsody.mp3' ,
@@ -105,28 +105,30 @@ let tracks = [
     cover : './cover/cover Gimme Shelter.jpg', artist : 'ROLLING STONES' , title : '(I Cant Get No) Satisfaction', id:52},
     {   url : './audio/Kiss - Detroit Rock City.mp3' ,
     cover : './cover/cover destroyer.jpg', artist : 'KISS' , title : 'Detroit Rock City', id:53},
+    {   url : './audio/Rolling Stones - Start Me up.mp3' ,
+    cover : './cover/cover start me up.jpg', artist : 'ROLLING STONES' , title : 'Start Me Up', id:54},
     {   url : './audio/Kiss - I Was Made For Loving You.mp3' ,
-    cover : './cover/cover dynasty.jpg', artist : 'KISS' , title : 'I Was Made For Loving You', id:54},
+    cover : './cover/cover dynasty.jpg', artist : 'KISS' , title : 'I Was Made For Loving You', id:55},
     {   url : './audio/Joan Jett - I Hate Myself For Loving You.mp3' ,
-    cover : './cover/cover up your alley.jpg', artist : 'JOAN JETT' , title : 'I Hate Myself For Loving You', id:55},
+    cover : './cover/cover up your alley.jpg', artist : 'JOAN JETT' , title : 'I Hate Myself For Loving You', id:56},
     {   url : './audio/Red Hot Chili Peppers - Snow (Hey-oh).mp3' ,
-    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Snow (Hey-oh)', id:56},
+    cover : './cover/cover stadium arcadium.jpg', artist : 'RHCP' , title : 'Snow (Hey-oh)', id:57},
     {   url : './audio/Manesktin - The Loneliest.mp3' ,
-    cover : './cover/cover rush.jpg', artist : 'MANESKIN' , title : 'The Loneliest', id:57},
+    cover : './cover/cover rush.jpg', artist : 'MANESKIN' , title : 'The Loneliest', id:58},
     {   url : './audio/Queen - Under Pressure.mp3' ,
-    cover : './cover/cover hot space.jpg', artist : 'QUEEN' , title : 'Under Pressure', id:58},
+    cover : './cover/cover hot space.jpg', artist : 'QUEEN' , title : 'Under Pressure', id:59},
     {   url : './audio/Rolling Stones - Gimme Shelter.mp3' ,
-    cover : './cover/cover Gimme Shelter.jpg', artist : 'ROLLING STONES' , title : 'Gimme Shelter', id:59},
+    cover : './cover/cover Gimme Shelter.jpg', artist : 'ROLLING STONES' , title : 'Gimme Shelter', id:60},
     {   url : `./audio/Joan Jett - I Love Rock n Roll.mp3` ,
-    cover : './cover/cover I love rock n roll.jpg', artist : 'JOAN JETT' , title : `I Love Rock 'N Roll`, id:60},
+    cover : './cover/cover I love rock n roll.jpg', artist : 'JOAN JETT' , title : `I Love Rock 'N Roll`, id:61},
     {   url : `./audio/The Doors - Roadhouse Blues.mp3` ,
-    cover : './cover/cover morrison hotel.jpg', artist : 'THE DOORS' , title : `Roadhouse Blues`, id:61},
+    cover : './cover/cover morrison hotel.jpg', artist : 'THE DOORS' , title : `Roadhouse Blues`, id:62},
     {   url : './audio/Maneskin - Zitti E Buoni.mp3' ,
-    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:62},
+    cover : './cover/cover teatro d ira.jpg', artist : 'MANESKIN' , title : 'Zitti E Buoni', id:63},
 ]
 
 /* btns */
-const plailystBtn = document.querySelector('#playlist-btn');
+const playlistBtn = document.querySelector('#playlist-btn');
 const playBtn = document.querySelector('#play-btn');
 const pauseBtn = document.querySelector('#pause-btn');
 const rightBtn = document.querySelector('#right-btn');
@@ -275,9 +277,9 @@ function next() {
 function songError() {
     setTimeout(() => {
         if (timeLeft.textContent == 'NaN.NaN') {
-            currentTrack++
+            next();
         }
-    }, 5000);
+    }, 4000);
 }
 
 function prev() {
@@ -319,21 +321,21 @@ function formatTime(sec){
     return `${minutes}.${seconds}`;
 }
 
-function truncateTitle(str) {
-    if (str.length < 5){
-        return str
-    } else {
-        return str.substr(0, 5) + '...';
+function animateTitle(str,el) {
+    if (str.length >= 12){
+        el.classList.add('custom_animation');
+    }  else {
+        el.classList.remove('custom_animation');
     }
+    return str;
 }
 
 function changeTrackDetails() {
     track.src = tracks[currentTrack].url;
-    trackArtist.innerHTML = truncateTitle(tracks[currentTrack].artist);
-    trackTitle.innerHTML = tracks[currentTrack].title;
-    trackCover.src = tracks[currentTrack].cover
-    backgroundImage.src = tracks[currentTrack].cover
-    
+    trackArtist.innerHTML = animateTitle(tracks[currentTrack].artist,trackArtist);
+    trackTitle.innerHTML = animateTitle(tracks[currentTrack].title,trackTitle);
+    trackCover.src = tracks[currentTrack].cover;
+    backgroundImage.src = tracks[currentTrack].cover;    
 }
 
 function randomTrack() {
@@ -455,7 +457,7 @@ function dragVolHandle(e){
 /* LISTENERS */
 playBtn.addEventListener('click', play);
 pauseBtn.addEventListener('click', play);
-plailystBtn.addEventListener('click', playlistToggle);
+playlistBtn.addEventListener('click', playlistToggle);
 searchBtn.addEventListener('click', searchToggle)
 rightBtn.addEventListener('click', next);
 leftBtn.addEventListener('click', prev);
